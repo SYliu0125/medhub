@@ -7,8 +7,8 @@ Works in any browser — Chrome, Safari, Firefox, Edge.
 
 ## Bookmarklet — Install (one-time)
 
-1. Open `bookmarklet/install.html` in your browser  
-   *(double-click the file, or File → Open)*
+1. Open the install page in your browser:  
+   **https://syliu0125.github.io/medhub/bookmarklet/install.html**
 
 2. **Show your bookmarks bar** if it's hidden:  
    - Chrome / Edge: `Cmd+Shift+B` (Mac) or `Ctrl+Shift+B` (Windows)  
