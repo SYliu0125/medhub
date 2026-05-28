@@ -1,0 +1,145 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Install MedHub Timesheet Filler</title>
+  <style>
+    * { box-sizing: border-box; margin: 0; padding: 0; }
+    body {
+      font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
+      background: #f5f7fa;
+      color: #1a1a1a;
+      min-height: 100vh;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      padding: 24px;
+    }
+    .card {
+      background: #fff;
+      border-radius: 16px;
+      padding: 40px;
+      max-width: 560px;
+      width: 100%;
+      box-shadow: 0 4px 24px rgba(0,0,0,.10);
+    }
+    h1 { font-size: 22px; color: #0d6efd; margin-bottom: 6px; }
+    .subtitle { font-size: 14px; color: #666; margin-bottom: 32px; }
+    h2 { font-size: 15px; font-weight: 600; margin-bottom: 12px; color: #333; }
+    .step { display: flex; gap: 14px; margin-bottom: 18px; align-items: flex-start; }
+    .num {
+      flex-shrink: 0;
+      width: 28px; height: 28px;
+      background: #0d6efd; color: #fff;
+      border-radius: 50%;
+      display: flex; align-items: center; justify-content: center;
+      font-size: 13px; font-weight: 700;
+    }
+    .step-body { padding-top: 4px; font-size: 14px; line-height: 1.5; color: #444; }
+    .step-body b { color: #1a1a1a; }
+
+    /* Bookmarklet drag target */
+    .drag-zone {
+      background: #f0f5ff;
+      border: 2px dashed #0d6efd;
+      border-radius: 12px;
+      padding: 20px;
+      text-align: center;
+      margin: 24px 0;
+    }
+    .drag-zone p { font-size: 13px; color: #555; margin-bottom: 14px; }
+    .bookmarklet-btn {
+      display: inline-block;
+      background: #0d6efd;
+      color: #fff !important;
+      text-decoration: none;
+      padding: 11px 22px;
+      border-radius: 8px;
+      font-size: 14px;
+      font-weight: 600;
+      cursor: grab;
+      user-select: none;
+      box-shadow: 0 2px 8px rgba(13,110,253,.35);
+      transition: opacity .15s;
+    }
+    .bookmarklet-btn:hover { opacity: .88; }
+
+    .divider {
+      border: none;
+      border-top: 1px solid #eee;
+      margin: 28px 0;
+    }
+    .usage-steps { font-size: 14px; line-height: 1.7; color: #444; }
+    .usage-steps li { margin-bottom: 6px; padding-left: 4px; }
+
+    .note {
+      background: #fffbea;
+      border: 1px solid #ffe066;
+      border-radius: 8px;
+      padding: 12px 14px;
+      font-size: 13px;
+      color: #7a6000;
+      margin-top: 20px;
+    }
+
+    kbd {
+      background: #f1f3f5;
+      border: 1px solid #ccc;
+      border-radius: 4px;
+      padding: 1px 6px;
+      font-size: 12px;
+      font-family: monospace;
+    }
+  </style>
+</head>
+<body>
+  <div class="card">
+    <h1>MedHub Timesheet Filler</h1>
+    <p class="subtitle">Fill 8am–6pm Mon–Fri in one click &mdash; works in any browser</p>
+
+    <h2>Install (one-time setup)</h2>
+
+    <div class="step">
+      <div class="num">1</div>
+      <div class="step-body">
+        <b>Show your bookmarks bar</b><br>
+        Chrome: <kbd>Ctrl+Shift+B</kbd> / <kbd>Cmd+Shift+B</kbd> &nbsp;|&nbsp;
+        Firefox: <kbd>Ctrl+Shift+B</kbd> &nbsp;|&nbsp;
+        Safari: View &rarr; Show Favourites Bar
+      </div>
+    </div>
+
+    <div class="step">
+      <div class="num">2</div>
+      <div class="step-body">
+        <b>Drag the button below</b> to your bookmarks bar:
+        <div class="drag-zone">
+          <p>Drag this button to your bookmarks bar &darr;</p>
+          <a class="bookmarklet-btn" href="javascript:%28function%28%29%7B%22use%20strict%22%3Bvar%20START%3D%228%3A00am%22%3Bvar%20END%3D%226%3A00pm%22%3Bif%28%21location.hostname.includes%28%22medhub.com%22%29%29%7Balert%28%22Please%20open%20MedHub%20in%20this%20tab%20first%2Cthen%20click%20the%20bookmark%20again.%22%29%3Breturn%3B%7Dvar%20params%3Dnew%20URLSearchParams%28location.search%29%3Bif%28params.get%28%22method%22%29%21%3D%3D%221%22%29%7Bvar%20startDate%3Dparams.get%28%22startDate%22%29%3Bif%28%21startDate%29%7Bvar%20today%3Dnew%20Date%28%29%3Bvar%20sun%3Dnew%20Date%28today%29%3Bsun.setDate%28today.getDate%28%29-%20today.getDay%28%29%29%3Bvar%20mm%3DString%28sun.getMonth%28%29%2B1%29.padStart%282%2C%220%22%29%3Bvar%20dd%3DString%28sun.getDate%28%29%29.padStart%282%2C%220%22%29%3BstartDate%3Dmm%2B%22%2F%22%2Bdd%2B%22%2F%22%2Bsun.getFullYear%28%29%3B%7Dlocation.href%3Dlocation.origin%2B%22%2Fu%2Fr%2Fschedule_timesheet.mh%3FstartDate%3D%22%2BencodeURIComponent%28startDate%29%2B%22%26tab%3D1%26action%3Dmethod%26method%3D1%22%3Breturn%3B%7Dvar%20overlay%3Ddocument.createElement%28%22div%22%29%3Boverlay.style.cssText%3D%22position%3Afixed%3Btop%3A0%3Bleft%3A0%3Bwidth%3A100%25%3Bheight%3A100%25%3B%22%2B%22background%3Argba%280%2C0%2C0%2C.5%29%3Bz-index%3A999998%3B%22%2B%22display%3Aflex%3Balign-items%3Acenter%3Bjustify-content%3Acenter%22%3Bvar%20box%3Ddocument.createElement%28%22div%22%29%3Bbox.style.cssText%3D%22background%3A%23fff%3Bborder-radius%3A12px%3Bpadding%3A24px%3Bwidth%3A288px%3B%22%2B%22font-family%3A-apple-system%2CBlinkMacSystemFont%2C%27Segoe%20UI%27%2Csans-serif%3B%22%2B%22box-shadow%3A0%208px%2032px%20rgba%280%2C0%2C0%2C.3%29%22%3Bbox.innerHTML%3D%22%3Ch2%20style%3D%27margin%3A0%200%206px%3Bfont-size%3A16px%3Bcolor%3A%230d6efd%27%3EMedHub%20Timesheet%20Filler%3C%2Fh2%3E%22%2B%22%3Cp%20style%3D%27margin%3A0%200%2016px%3Bfont-size%3A13px%3Bcolor%3A%23666%27%3EFill%20Mon%E2%80%93Fri%3A%3Cb%3E8%3A00am%20%E2%80%93%206%3A00pm%3C%2Fb%3E%3C%2Fp%3E%22%2B%22%3Cbutton%20id%3D%27_mh_sub%27%20style%3D%27width%3A100%25%3Bpadding%3A9px%3Bbackground%3A%230d6efd%3Bcolor%3A%23fff%3B%22%2B%22border%3Anone%3Bborder-radius%3A7px%3Bfont-size%3A13px%3Bfont-weight%3A600%3Bcursor%3Apointer%3Bmargin-bottom%3A8px%27%3E%22%2B%22Fill%20%26amp%3BSubmit%3C%2Fbutton%3E%22%2B%22%3Cbutton%20id%3D%27_mh_fill%27%20style%3D%27width%3A100%25%3Bpadding%3A9px%3Bbackground%3A%23e9ecef%3Bcolor%3A%23333%3B%22%2B%22border%3Anone%3Bborder-radius%3A7px%3Bfont-size%3A13px%3Bcursor%3Apointer%3Bmargin-bottom%3A8px%27%3E%22%2B%22Fill%20Only%28review%20before%20submit%29%3C%2Fbutton%3E%22%2B%22%3Cbutton%20id%3D%27_mh_cancel%27%20style%3D%27width%3A100%25%3Bpadding%3A8px%3Bbackground%3Anone%3Bcolor%3A%23999%3B%22%2B%22border%3A1px%20solid%20%23ddd%3Bborder-radius%3A7px%3Bfont-size%3A12px%3Bcursor%3Apointer%27%3E%22%2B%22Cancel%3C%2Fbutton%3E%22%3Boverlay.appendChild%28box%29%3Bdocument.body.appendChild%28overlay%29%3Bfunction%20close%28%29%7Bdocument.body.removeChild%28overlay%29%3B%7Dfunction%20fill%28submitAfter%29%7Bvar%20filled%3D0%3Bfor%28var%20d%3D2%3Bd%20%3C%3D6%3Bd%2B%2B%29%7Bvar%20inEl%3Ddocument.querySelector%28%22select%5Bname%3D%27day%22%2Bd%2B%22_1_in%27%5D%22%29%3Bvar%20outEl%3Ddocument.querySelector%28%22select%5Bname%3D%27day%22%2Bd%2B%22_1_out%27%5D%22%29%3Bif%28%21inEl%20%7C%7C%20%21outEl%29continue%3BinEl.value%3DSTART%3BinEl.dispatchEvent%28new%20Event%28%22change%22%2C%7Bbubbles%3Atrue%7D%29%29%3BoutEl.value%3DEND%3BoutEl.dispatchEvent%28new%20Event%28%22change%22%2C%7Bbubbles%3Atrue%7D%29%29%3Bfilled%2B%2B%3B%7Dif%28submitAfter%29%7Bvar%20btn%3Ddocument.querySelector%28%22a%5Baria-label%3D%27Submit%20Work%20Hours%27%5D%22%29%3Bif%28btn%29btn.click%28%29%3Belse%20alert%28%22%E2%9A%A0%20Submit%20button%20not%20found%20%E2%80%94%20please%20submit%20manually.%22%29%3B%7Dreturn%20filled%3B%7Ddocument.getElementById%28%22_mh_sub%22%29.onclick%3Dfunction%28%29%7Bclose%28%29%3Bvar%20n%3Dfill%28true%29%3Balert%28%22%E2%9C%93%20Filled%20%22%2Bn%2B%22%20day%28s%29and%20submitted%21%22%29%3B%7D%3Bdocument.getElementById%28%22_mh_fill%22%29.onclick%3Dfunction%28%29%7Bclose%28%29%3Bvar%20n%3Dfill%28false%29%3Balert%28%22%E2%9C%93%20Filled%20%22%2Bn%2B%22%20day%28s%29.%20Please%20review%20and%20click%20Submit.%22%29%3B%7D%3Bdocument.getElementById%28%22_mh_cancel%22%29.onclick%3Dclose%3Boverlay.onclick%3Dfunction%28e%29%7Bif%28e.target%3D%3D%3Doverlay%29close%28%29%3B%7D%3B%7D%29%28%29%3B">MedHub Timesheet Filler</a>
+        </div>
+        <small style="color:#888;font-size:12px">Can't drag? Right-click the button &rarr; "Bookmark this link" / "Add to Favourites"</small>
+      </div>
+    </div>
+
+    <div class="step">
+      <div class="num">3</div>
+      <div class="step-body">That's it! The bookmark is now saved in your browser.</div>
+    </div>
+
+    <hr class="divider" />
+
+    <h2>How to use (every week)</h2>
+    <ol class="usage-steps">
+      <li>Log in to <a href="https://singhealth.medhub.com" target="_blank" style="color:#0d6efd">singhealth.medhub.com</a></li>
+      <li>Go to your timesheet (the week you want to fill)</li>
+      <li>Click the <b>MedHub Timesheet Filler</b> bookmark in your bookmarks bar</li>
+      <li>Choose <b>Fill &amp; Submit</b> or <b>Fill Only</b></li>
+    </ol>
+
+    <div class="note">
+      <b>Note:</b> If the page redirects (switching to the pull-down view), just click the bookmark <b>once more</b> after the page loads.
+    </div>
+  </div>
+</body>
+</html>
