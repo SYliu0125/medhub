@@ -1,39 +1,47 @@
 # MedHub Timesheet Filler
 
-Automatically fills **8am–6pm Mon–Fri** on [SingHealth MedHub](https://singhealth.medhub.com) in one click.  
-Works in any browser — Chrome, Safari, Firefox, Edge.
+Automatically fills **8am–6pm Mon–Fri** on SingHealth MedHub in one click.  
+Works in any browser — Chrome, Safari, Firefox, Edge. No install required.
 
----
+## Install
 
-## Bookmarklet — Install (one-time)
+### 1. Open the install page
 
-1. Open the install page in your browser:  
-   **https://syliu0125.github.io/medhub/bookmarklet/install.html**
+> **https://syliu0125.github.io/medhub/bookmarklet/install.html**
 
-2. **Show your bookmarks bar** if it's hidden:  
-   - Chrome / Edge: `Cmd+Shift+B` (Mac) or `Ctrl+Shift+B` (Windows)  
-   - Firefox: `Ctrl+Shift+B`  
-   - Safari: View → Show Favourites Bar
+### 2. Show your bookmarks bar (if hidden)
 
-3. **Drag** the blue "MedHub Timesheet Filler" button onto your bookmarks bar  
-   *(or right-click it → "Bookmark this link" / "Add to Favourites")*
+| Browser | Shortcut |
+|---------|----------|
+| Chrome / Edge (Mac) | `Cmd+Shift+B` |
+| Chrome / Edge (Windows) | `Ctrl+Shift+B` |
+| Firefox | `Ctrl+Shift+B` |
+| Safari | View → Show Favourites Bar |
 
-Done. You only need to do this once.
+### 3. Drag the button to your bookmarks bar
+
+On the install page, drag the blue **"MedHub Timesheet Filler"** button onto your bookmarks bar.  
+*(Can't drag? Right-click it → "Bookmark this link" / "Add to Favourites")*
+
+That's it — one-time setup, done.
 
 ---
 
 ## Use (every week)
 
 1. Log in to [singhealth.medhub.com](https://singhealth.medhub.com)
-2. Navigate to your timesheet for the week you want to fill
+2. Go to your timesheet for the week you want to fill
 3. Click **MedHub Timesheet Filler** in your bookmarks bar
 4. Choose **Fill & Submit** or **Fill Only**
 
-> **Tip:** If the page redirects on first click (switching to the pull-down view), click the bookmark **once more** after it loads.
+> If the page redirects on first click, just click the bookmark **once more** after it loads.
 
 ---
 
-## Python Script (developers / command line)
+## Python script (command line / developers)
+
+<details>
+<summary>Click to expand</summary>
 
 ### Setup
 
@@ -58,3 +66,5 @@ python3 medhub_timesheet.py                    # current week
 python3 medhub_timesheet.py --date 2026-05-19  # specific week
 python3 medhub_timesheet.py --dry-run          # preview only, no changes
 ```
+
+</details>
